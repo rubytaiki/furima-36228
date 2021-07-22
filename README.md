@@ -24,12 +24,12 @@ has_many orders
 |-----------------------|--------|-----------|
 |item_name              |string  |null: false|
 |description            |text    |null: false|
-|category               |string  |null: false|
+|category_id            |integer |null: false|
 |status_id              |integer |null: false|
 |charge_id              |integer |null: false|
 |prefecture_id          |integer |null: false|
 |shipping_date_id       |integer |null: false|
-|price_id               |integer |null: false|
+|price                  |integer |null: false|
 
 
 
@@ -55,12 +55,12 @@ has_one address
 
 |Column           |Type       |Options                        | 
 |-----------------|-----------|-------------------------------|
-|postal_code      |integer    |null: false                    |
+|postal_code      |string     |null: false                    |
 |prefecture_id    |integer    |null: false                    |
 |city_word        |string     |null: false                    |
 |house_number     |string     |null: false                    |
 |building_name    |string     |                               |
-|phone_number     |integer    |null: false                    |
+|phone_number     |string     |null: false                    |
 |order            |references |null: false, foreign_key: true |
 
 ### Association
