@@ -20,16 +20,17 @@ has_many orders
 
 ## Items テーブル
 
-|Column                 |Type    |Options    |
-|-----------------------|--------|-----------|
-|item_name              |string  |null: false|
-|description            |text    |null: false|
-|category_id            |integer |null: false|
-|status_id              |integer |null: false|
-|charge_id              |integer |null: false|
-|prefecture_id          |integer |null: false|
-|shipping_date_id       |integer |null: false|
-|price                  |integer |null: false|
+|Column                 |Type       |Options                        |
+|-----------------------|-----------|-------------------------------|
+|item_name              |string     |null: false                    |
+|description            |text       |null: false                    |
+|category_id            |integer    |null: false                    |
+|status_id              |integer    |null: false                    |
+|charge_id              |integer    |null: false                    |
+|prefecture_id          |integer    |null: false                    |
+|shipping_date_id       |integer    |null: false                    |
+|price                  |integer    |null: false                    |
+|user                   |references |null: false, foreign_key: true |
 
 
 
