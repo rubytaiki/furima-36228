@@ -19,7 +19,6 @@ RSpec.describe User, type: :model do
     end
 
     context 'ユーザー登録できないとき' do
-
       it 'nickname:必須' do
         @user.nickname = ''
         @user.valid?
