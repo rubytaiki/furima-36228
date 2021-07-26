@@ -53,11 +53,11 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
       it '発送までの日数の情報が必須であること' do
-        @item.shippingDate_id = 1
+        @item.shipping_date_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shippingdate can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping date can't be blank")
       end
-      it '価格の情報が必須であること' do
+      it '商品の状態が必須であること' do
         @item.status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Status can't be blank")
@@ -82,6 +82,14 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not a number")
       end
+
+      it 'ユーザーが紐づいていないと出品できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
+      end
+
+
     end
   end
 end
