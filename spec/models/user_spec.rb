@@ -119,6 +119,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Password is invalid')
       end
 
+
       it 'passwordとpassword_confirmationが一致しないと登録できない' do
         @user.password = '12345'
         @user.password_confirmation = '1234567'
@@ -138,6 +139,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Email is invalid')
       end
+
     end
   end
 end
