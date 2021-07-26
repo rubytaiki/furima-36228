@@ -2,17 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
-    @item = Item.new(
-      item_name: "The map",
-      description: "It's a world map that I love most",
-      price: 2000,
-      category_id: 2,
-      status_id: 2,
-      prefecture_id: 2,
-      charge_id: 2,
-      shippingDate_id: 2
-    )
-    @item.image.attach(io: File.open('app/assets/images/893352925-28144059336.jpg'), filename: '893352925-28144059336.jpg')
+    @item = FactoryBot.build(:item)
   end
 
   describe '#create' do
@@ -40,23 +30,13 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Item name can't be blank")
       end
-      it '商品名が40字以下であること' do
-        @item.item_name = 'あ' * 41
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Item name is too long (maximum is 40 characters)")
-      end
       
       it '商品の説明が必須であること' do
         @item.description = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
-      it '商品説明が1000字以下であること' do
-        @item.description = 'あ' * 1001
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Description is too long (maximum is 1000 characters)")
-      end
-
+    
       it 'カテゴリーの情報が必須であること' do
         @item.category_id = 1
         @item.valid?
@@ -92,8 +72,13 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
       end
-      it '価格は半角数値のみ保存可能であること' do
-        @item.price = '２２２'
+      it '価格は半角数値のみ保存可能であること(半角英数混合×のパターン)' do
+        @item.price = '111e'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+      it '価格は半角数値のみ保存可能であること（半角英語×のパターン）' do
+        @item.price = 'eeeee'
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not a number")
       end
