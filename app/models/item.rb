@@ -15,13 +15,12 @@ class Item < ApplicationRecord
     validates :price
   end
 
-  
   with_options allow_blank: true do
-    validates :price, numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}, format:{ with: /\A[0-9]+\z/ }
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
+                      format: { with: /\A[0-9]+\z/ }
   end
-  
 
-  with_options numericality: { other_than: 1 , message: "can't be blank"} do
+  with_options numericality: { other_than: 1, message: "can't be blank" } do
     validates :category_id
     validates :status_id
     validates :prefecture_id
@@ -30,5 +29,4 @@ class Item < ApplicationRecord
   end
 
   has_one_attached :image
-
 end
