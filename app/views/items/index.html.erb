@@ -126,7 +126,7 @@
     <div class="subtitle" >
       新規投稿商品
     </div>
-    <ul class='item-lists'>
+    <ul cl<%# ass='item-lists'>
       <% @items.each do |item| %>
         <li class='list'>
           <%= link_to item_path(item.id) do %>
@@ -152,7 +152,7 @@
             </div>
           <% end %>
         </li>
-      <% end %>
+      <% end % %>>
       
       <% if @item.present? %>
         <li class='list'>

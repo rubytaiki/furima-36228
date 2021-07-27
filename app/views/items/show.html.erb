@@ -24,22 +24,22 @@
     </div>
 
    
-    <% if @item.present? || user_signed_in? %>
-      <% if user_signed_in? && current_user.id == @item.user_id %>
-        <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
+    <%# <% if @item.present? || user_signed_in? %>
+      <<%# % if user_signed_in? && current_user.id == @item.user_id %>
+        <%# <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>
         <%= link_to "削除", "#", method: :delete, class:"item-destroy" %>
       <% end %>
-
-      <% if user_signed_in? && current_user.id != @item.user_id %>
+ %>
+      <%# <% if user_signed_in? && current_user.id != @item.user_id %>
         <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
-      <% end %>
-    <% end %>
+      <% end %> %> %>
+    <% end %> %>
 
     
 
     <div class="item-explain-box">
-      <span><%= @item.description %></span>
+      <sp<%# <%# an><%= @item.description %></span>
     </div>
     <table class="detail-table">
       <tbody>
@@ -66,7 +66,7 @@
         <tr>
           <th class="detail-item">発送日の目安</th>
           <td class="detail-value"><%= @item.shipping_date.name %></td>
-        </tr>
+        </tr> %> %>
       </tbody>
     </table>
     <div class="option">
