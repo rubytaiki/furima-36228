@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :find_params, only: [:edit, :update, :move_to_index, :show]
   before_action :move_to_index, only: [:edit, :update]
 
@@ -20,6 +20,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+  end
+
   def show
   end
 
@@ -33,6 +38,8 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
+
+  
 
   private
 
