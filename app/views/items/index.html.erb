@@ -126,8 +126,8 @@
     <div class="subtitle" >
       新規投稿商品
     </div>
-    <ul cl<%# ass='item-lists'>
-      <% @items.each do |item| %>
+    <ul class='item-lists'>
+      <%# @items.each do |item| %>
         <li class='list'>
           <%= link_to item_path(item.id) do %>
             <div class='item-img-content'>
@@ -152,7 +152,7 @@
             </div>
           <% end %>
         </li>
-      <% end % %>>
+      <%# end %>
       
       <% if @item.present? %>
         <li class='list'>
