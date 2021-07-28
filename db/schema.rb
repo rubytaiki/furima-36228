@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_07_28_054320) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
-    t.integer "prefecrure_id", null: false
+    t.integer "prefecture_id", null: false
     t.string "city_word", null: false
     t.string "house_number", null: false
     t.string "building_name"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2021_07_28_054320) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "addresses", "orders"
   add_foreign_key "items", "users"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
