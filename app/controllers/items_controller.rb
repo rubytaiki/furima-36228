@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :find_params, only: [:edit, :update, :show, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
-  before_action :cannot_edit, only: [:edit]
+  before_action :has_orderd, only: [:edit, :update]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -59,7 +59,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def cannot_edit
+  def has_orderd
     if @item.order.present?
       redirect_to root_path
     end
